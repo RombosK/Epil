@@ -1,0 +1,46 @@
+{% extends "base_generic.html" %}
+
+{% block title %}Добавить клиента{% endblock %}
+
+{% block content %}
+<h2 style="text-align: center;">Добавить нового клиента</h2>
+
+<form method="post" class="client-create-form">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.as_p }}  <!-- Поля формы автоматически получат класс form-control -->
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn">Создать клиента</button>
+        <a href="{% url 'client_list' %}" class="btn cancel-btn">Отмена</a>
+    </div>
+</form>
+
+<style>
+    .client-create-form {
+        background-color: #ffffff; /* Белый фон для формы */
+        padding: 20px; /* Отступы внутри формы */
+        border-radius: 5px; /* Закругленные углы */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Легкая тень */
+        margin: 20px auto; /* Центрирование формы */
+        max-width: 900px; /* Максимальная ширина формы */
+    }
+
+    h2 {
+        color: #4A90E2; /* Цвет заголовка */
+        text-align: center; /* Центрирование заголовка */
+    }
+
+    .form-actions {
+        display: flex;
+        justify-content: center; /* Центрирование кнопок */
+        margin-top: 10px; /* Отступ сверху для кнопок */
+    }
+
+    button.btn,
+    a.btn.cancel-btn {
+        margin: 0 5px; /* Отступы между кнопками */
+        display: inline-block; /* Отображение кнопок в одной строке */
+    }
+</style>
+{% endblock %}

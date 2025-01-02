@@ -1,0 +1,50 @@
+{% load static %}
+
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}База данных Lumenis{% endblock %}</title>
+
+    <!-- Подключение CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+    <style>
+        header {
+            text-align: center; /* Центрирование содержимого в заголовке */
+            padding: 20px; /* Отступы для заголовка */
+            background-color: #ffffff; /* Белый фон для заголовка */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Легкая тень */
+        }
+        img {
+            width: 10%; /* Установка ширины изображения */
+            height: auto; /* Сохранение пропорций */
+        }
+        footer {
+            text-align: center; /* Центрирование текста в подвале */
+            padding: 10px; /* Отступы для подвала */
+            background-color: #f1f1f1; /* Светлый фон для подвала */
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <img src="{% static 'img/logos.png' %}" alt="Логотип"> <!-- Вставка изображения -->
+    <h1>Добро пожаловать в базу данных Lumenis</h1>
+</header>
+
+<main class="container">
+    {% block content %}
+    <!-- Содержимое дочернего шаблона будет вставлено сюда -->
+    {% endblock %}
+</main>
+
+<footer>
+    <p>&copy; 2025 Lumenis</p>
+</footer>
+</body>
+</html>
