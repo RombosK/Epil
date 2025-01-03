@@ -84,13 +84,10 @@ WSGI_APPLICATION = "beauty_salon.wsgi.application"
 # }
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "laser",
-        "USER": "laser",
-        "PASSWORD": "laser",
-        "HOST": "db",
-        "PORT": "5432",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'laser',
+        'USER': 'postgres'
     }
 }
 
