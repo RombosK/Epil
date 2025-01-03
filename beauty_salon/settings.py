@@ -57,7 +57,7 @@ ROOT_URLCONF = "beauty_salon.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -132,8 +132,8 @@ STATIC_URL = '/static/'
 # ]
 
 # Путь к директории, куда будут собираться все статические файлы при выполнении collectstatic
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = BASE_DIR / 'static'
 # Дополнительные директории, где Django будет искать статические файлы
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, 'static'),  # Папка для статических файлов вашего приложения
