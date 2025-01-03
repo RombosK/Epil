@@ -20,7 +20,6 @@ services:
     command: bash -c 
       ./wait-for-postgres.sh db
       && python manage.py migrate
-      && echo \"from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('olgak', 'rombos1978@gmail.com', 'lumenis')\" | python manage.py shell
       && gunicorn beauty_salon.wsgi:application -b 0.0.0.0:8080
 
     depends_on:

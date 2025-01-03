@@ -149,3 +149,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # LOGIN_URL = '/accounts/login/'
 LOGIN_URL = '/clients/access_denied/'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
