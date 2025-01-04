@@ -7,5 +7,5 @@ build:
   requirementsPath: requirements.txt
 run:
   persistenceMount: /data
-  containerPort: "80"
+  containerPort: 8080
   command: gunicorn beauty_salon.wsgi -b 0.0.0.0:8080
