@@ -1,14 +1,38 @@
-<!-- templates/access_denied.html -->
-<!DOCTYPE html>
+{% load static %}
+
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Доступ запрещен</title>
+    <style>
+        body {
+            text-align: center; /* Центрирование текста */
+        }
+        img {
+            max-width: 100%; /* Ограничение ширины изображения */
+            height: auto; /* Автоматическая высота */
+            margin-bottom: 20px; /* Отступ снизу для изображения */
+        }
+        a {
+            display: inline-block; /* Позволяет задать отступы */
+            margin-top: 10px; /* Отступ сверху для ссылки */
+            font-size: 16px; /* Размер шрифта ссылки */
+            text-decoration: none; /* Убираем подчеркивание */
+            color: #007BFF; /* Цвет ссылки */
+        }
+        a:hover {
+            text-decoration: underline; /* Подчеркивание при наведении */
+        }
+    </style>
 </head>
 <body>
 <h1>Доступ запрещен</h1>
 <p>У вас нет прав для доступа к этой странице. Пожалуйста, войдите как суперпользователь.</p>
-<a href="{% url 'client_list' %}">Назад к списку клиентов</a>
+
+<!-- Вставьте изображение здесь -->
+<img src="{% static 'img/stop.jpeg' %}" alt="Описание изображения">
+
+
 </body>
 </html>
