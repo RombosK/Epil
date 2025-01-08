@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import UserPassesTestMixin
-from django.http import JsonResponse
-from django.shortcuts import redirect
+
+from django.http import JsonResponse, request
+from django.shortcuts import redirect, render
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView, TemplateView
 from django.urls import reverse_lazy
 from .models import Client
@@ -31,6 +32,7 @@ class ClientCreateView(SuperuserRequiredMixin, CreateView):
 
 class ClientListView(SuperuserRequiredMixin, ListView):
     """Отображение списка клиентов."""
+    paginate_by = 50   # Количество клиентов на странице
     model = Client
     template_name = 'client_list.html'
     context_object_name = 'clients'
@@ -48,7 +50,7 @@ class ClientListView(SuperuserRequiredMixin, ListView):
                 Q(username__icontains=search_query)
             )
 
-        return queryset
+        return queryset.order_by('id')
 
     def get(self, request, *args, **kwargs):
         if request.headers.get('x-requested-with') == 'XMLHttpRequest':  # Проверка на AJAX-запрос
@@ -66,50 +68,6 @@ class ClientListView(SuperuserRequiredMixin, ListView):
             return JsonResponse(client_data, safe=False)
         else:
             return super().get(request, *args, **kwargs)
-
-# class ClientListView(SuperuserRequiredMixin, ListView):
-#     """Отображение списка клиентов."""
-#     model = Client
-#     template_name = 'client_list.html'
-#     context_object_name = 'clients'
-#
-#     def get_queryset(self):
-#         queryset = Client.objects.filter(deleted=False)  # Показываем только не удаленных клиентов
-#         search_query = self.request.GET.get('search', '')  # Получаем значение из поля поиска
-#
-#         if search_query:
-#             queryset = queryset.filter(
-#                 Q(name__istartswith=search_query) |
-#                 Q(surname__istartswith=search_query) |
-#                 Q(phone__istartswith=search_query) |
-#                 Q(city__istartswith=search_query) |
-#                 Q(username__istartswith=search_query)
-#             )
-#
-#         return queryset
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['is_authenticated'] = self.request.user.is_authenticated  # Передаем информацию о авторизации
-#         return context
-#
-#     def get(self, request, *args, **kwargs):
-#         if request.headers.get('x-requested-with') == 'XMLHttpRequest':  # Проверка на AJAX-запрос
-#             clients = self.get_queryset()
-#             client_data = [
-#                 {
-#                     'id': client.pk,
-#                     'name': client.name,
-#                     'surname': client.surname,
-#                     'username': client.username,
-#                     'phone': client.phone,
-#                     'city': client.city,
-#                 }
-#                 for client in clients
-#             ]
-#             return JsonResponse(client_data, safe=False)
-#         else:
-#             return super().get(request, *args, **kwargs)
 
 
 class ClientDetailView(SuperuserRequiredMixin, DetailView):

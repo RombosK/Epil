@@ -24,7 +24,7 @@ SECRET_KEY = "django-insecure-en_ub$f(0tv)tej#n0@k7z3_gt#0=lxkd9((=0j5q1zemc2sgn
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-
+# DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
@@ -127,13 +127,13 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
-# STATICFILES_DIRS = [
-#     BASE_DIR / "static",
-# ]
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 
 # Путь к директории, куда будут собираться все статические файлы при выполнении collectstatic
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_ROOT = BASE_DIR / 'static'
+# STATIC_ROOT = BASE_DIR / 'static'
 # Дополнительные директории, где Django будет искать статические файлы
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, 'static'),  # Папка для статических файлов вашего приложения

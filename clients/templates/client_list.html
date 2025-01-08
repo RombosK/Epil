@@ -1,6 +1,7 @@
+
 <!-- templates/client_list.html -->
 {% extends "base_generic.html" %}
-
+{% load static %}
 {% block title %}Список клиентов{% endblock %}
 
 {% block content %}
@@ -89,4 +90,9 @@
     });
 </script>
 
+<!--  -->
+<!-- Подключение CSS -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/paginator.css' %}">
+{% include 'clients/includes/paginator.html' %}
+<!--  -->
 {% endblock %}

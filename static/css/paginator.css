@@ -1,0 +1,72 @@
+.paginator {
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.paginator__text {
+    color: rgba(109, 176, 195, 1.00);
+    font-family: Nunito;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: right;
+}
+.paginator__text:hover {
+    color: rgba(205, 22, 49, 1.00);
+}
+
+.paginator__textActive {
+    color: rgba(232, 26, 58, 1.00);
+        font-family: Nunito;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: right;
+}
+
+.paginator__left {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 13px solid rgba(109, 176, 195, 1.00);
+}
+
+.paginator__right {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 13px solid rgba(109, 176, 195, 1.00);
+}
+
+.paginator__left:hover {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 13px solid rgba(205, 22, 49, 1.00);
+}
+
+.paginator__right:hover {
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 13px solid rgba(205, 22, 49, 1.00);
+
+}
+
+.paginator__end {
+    color: rgba(109, 176, 195, 1.00);
+    font-family: Nunito;
+    font-size: 36px;
+    font-weight: 400;
+    text-align: right;
+}
+.paginator__end:hover {
+    color: rgba(205, 22, 49, 1.00);
+}
