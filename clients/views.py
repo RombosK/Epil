@@ -35,7 +35,6 @@ class ClientListView(SuperuserRequiredMixin, ListView):
     paginate_by = 50   # Количество клиентов на странице
     model = Client
     template_name = 'client_list.html'
-    context_object_name = 'clients'
 
     def get_queryset(self):
         queryset = Client.objects.filter(deleted=False)  # Показываем только не удаленных клиентов
@@ -49,7 +48,6 @@ class ClientListView(SuperuserRequiredMixin, ListView):
                 Q(city__icontains=search_query) |
                 Q(username__icontains=search_query)
             )
-
         return queryset.order_by('id')
 
     def get(self, request, *args, **kwargs):

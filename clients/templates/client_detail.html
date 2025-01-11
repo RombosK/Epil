@@ -4,9 +4,12 @@
 {% block title %}Детали клиента: {{ client.name }}{% endblock %}
 
 {% block content %}
+<a href="{% url 'client_edit' client.pk %}">Редактировать</a> |
+<a href="{% url 'client_list' %}">Назад к списку клиентов</a>
 <h2>Данные: {{ client.name }} {{ client.surname }}</h2>
 
 <p><strong>ID:</strong> {{ client.pk }}</p>
+<p><strong>Как в телефоне :</strong> {{ client.username }}</p>
 <p><strong>Имя:</strong> {{ client.name }}</p>
 <p><strong>Фамилия:</strong> {{ client.surname }}</p>
 <p><strong>Телефон:</strong> {{ client.phone }}</p>

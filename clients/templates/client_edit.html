@@ -1,19 +1,39 @@
 {% extends "base_generic.html" %}
+{% load widget_tweaks %}
 
 {% block title %}Редактировать клиента: {{ client.name }}{% endblock %}
 
 {% block content %}
+<a href="{% url 'client_list' %}">Назад к списку клиентов</a>
 <h2>Редактировать клиента: {{ client.name }} {{ client.surname }}</h2>
 
 <form method="post" class="client-edit-form">
     {% csrf_token %}
     <div class="form-group">
-        {{ form.as_p }} <!-- Поля формы автоматически получат класс form-control -->
+        {% for field in form %}
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field|add_class:"form-control" }} <!-- Применение класса form-control -->
+        {% endfor %}
     </div>
     <div class="form-actions">
         <button type="submit" class="btn">Сохранить изменения</button>
         <a href="{% url 'client_detail' client.pk %}" class="btn cancel-btn">Отмена</a>
     </div>
+
+    {% if form.errors %}
+    <div class="alert alert-danger">
+        <ul>
+            {% for field in form %}
+            {% for error in field.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
 </form>
 
 <style>
@@ -25,4 +45,5 @@
         margin-top: 20px;
     }
 </style>
+
 {% endblock %}
