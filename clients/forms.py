@@ -22,7 +22,7 @@ class ClientForm(forms.ModelForm):
         this_year = date.today().year
 
         # Создаем диапазон годов от 2022 до текущего года
-        year_range = range(start_year, this_year + 5)  # Включает текущий год
+        year_range = range(start_year, this_year + 10)  # Включает текущий год
 
         # Заменяем виджет для поля date_of_laser на SelectDateWidget с указанным диапазоном годов
         self.fields['date_of_laser'].widget = SelectDateWidget(years=year_range)

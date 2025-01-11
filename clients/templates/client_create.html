@@ -1,14 +1,18 @@
 {% extends "base_generic.html" %}
+{% load widget_tweaks %}
 
 {% block title %}Добавить клиента{% endblock %}
 
 {% block content %}
-<h2 style="text-align: center;">Добавить нового клиента</h2>
+<h2>Добавить нового клиента</h2>
 
 <form method="post" class="client-create-form">
     {% csrf_token %}
     <div class="form-group">
-        {{ form.as_p }}  <!-- Поля формы автоматически получат класс form-control -->
+        {% for field in form %}
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field|add_class:"form-control" }} <!-- Применение класса form-control -->
+        {% endfor %}
     </div>
     <div class="form-actions">
         <button type="submit" class="btn">Создать клиента</button>
@@ -23,7 +27,7 @@
         border-radius: 5px; /* Закругленные углы */
         box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Легкая тень */
         margin: 20px auto; /* Центрирование формы */
-        max-width: 900px; /* Максимальная ширина формы */
+        max-width: 1200px; /* Максимальная ширина формы */
     }
 
     h2 {

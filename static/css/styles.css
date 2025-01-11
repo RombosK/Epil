@@ -13,6 +13,9 @@ header {
     padding: 20px;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    width: 100%; /* Устанавливаем ширину на 100% */
+    margin: 0; /* Убираем отступы */
+    position: relative;
 }
 
 h1, h2 {
